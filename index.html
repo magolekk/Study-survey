@@ -149,7 +149,7 @@
         <h1>📚 Back-to-School Study Survey</h1>
         <p class="subtitle">Help me understand what would make studying easier for you</p>
         
-        <form id="surveyForm">
+        <form id="surveyForm" action="https://formspree.io/f/xwlewrdl" method="POST">
             <!-- Success Message -->
             <div class="success-message" data-fs-success>
                 ✓ Thank you!
@@ -323,10 +323,6 @@
         </form>
     </div>
     
-    <script>
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { formElement: '#surveyForm', formId: 'xwlewrdl' });
-    </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+   
 </body>
 </html>
