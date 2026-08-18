@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back-to-School Study Habits Survey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 28px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        input[type="checkbox"],
+        input[type="radio"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+        
+        .checkbox-item label,
+        .radio-item label {
+            margin-bottom: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Back-to-School Study Survey</h1>
+        <p class="subtitle">Help me understand what would make studying easier for you</p>
+        
+        <form id="surveyForm">
+            <!-- Success Message -->
+            <div class="success-message" data-fs-success style="display: none;">
+                ✓ Thanks! Your answers have been submitted. I'll be in touch soon!
+            </div>
+            <!-- Name & Contact -->
+            <div class="form-group">
+                <label for="name">What age group are you in? (Optional)</label>
+                <input type="number" id="number" number="number">
+            </div>
+            
+            <!-- Exams & Timeline -->
+            <div class="form-group">
+                <label for="exams">When are your next important exams or assessments?</label>
+                <input type="text" id="exams" name="exams" placeholder="e.g., June 2025, next month, etc.">
+            </div>
+            
+            <div class="form-group">
+                <label for="subjects">Which subjects are you taking for National 4/5? (List them)</label>
+                <input type="text" id="subjects" name="subjects" placeholder="e.g., Maths, English, Biology, History">
+            </div>
+            
+            <div class="form-group">
+                <label>Have you used SQA past papers yet?</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="sqaYes" name="sqa-experience" value="yes-easy">
+                        <label for="sqaYes">Yes, easy to find and use</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="sqaNo" name="sqa-experience" value="yes-hard">
+                        <label for="sqaNo">Yes, but it's a hassle to find them</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="sqaNone" name="sqa-experience" value="no">
+                        <label for="sqaNone">No, haven't used them yet</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Pain Points -->
+            <div class="form-group">
+                <label>What's your biggest struggle right now with studying? (Select all that apply)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="struggle1" name="struggle" value="notes-scattered">
+                        <label for="struggle1">My notes are scattered everywhere (different apps, notebooks)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="struggle2" name="struggle" value="forgetting-deadlines">
+                        <label for="struggle2">I forget what's due when / lose track of deadlines</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="struggle3" name="struggle" value="dont-know-how">
+                        <label for="struggle3">I don't know how to study effectively</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="struggle4" name="struggle" value="motivation">
+                        <label for="struggle4">I struggle to stay motivated / keep going</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="struggle5" name="struggle" value="overwhelmed">
+                        <label for="struggle5">Feeling overwhelmed by how much there is to do</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="struggle6" name="struggle" value="organizing">
+                        <label for="struggle6">Organizing materials (finding past papers, resources, etc.)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Tools -->
+            <div class="form-group">
+                <label>What tools do you use to organize your study? (Select all that apply)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tool1" name="tools" value="pen-paper">
+                        <label for="tool1">Pen and paper / notebooks</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tool2" name="tools" value="google-docs">
+                        <label for="tool2">Google Docs / Word</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tool3" name="tools" value="notion">
+                        <label for="tool3">Notion</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tool4" name="tools" value="phone-notes">
+                        <label for="tool4">Phone notes app</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tool5" name="tools" value="trello">
+                        <label for="tool5">Trello / Kanban boards</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tool6" name="tools" value="calendar">
+                        <label for="tool6">Calendar app</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tool7" name="tools" value="nothing">
+                        <label for="tool7">Nothing organized, just whatever</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Study Techniques -->
+            <div class="form-group">
+                <label>Which study techniques have you heard of or tried? (Select all that apply)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech1" name="techniques" value="flashcards">
+                        <label for="tech1">Flashcards / spaced repetition</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech2" name="techniques" value="past-papers">
+                        <label for="tech2">Past papers / exam practice</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech3" name="techniques" value="active-recall">
+                        <label for="tech3">Active recall (testing yourself)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech4" name="techniques" value="pomodoro">
+                        <label for="tech4">Pomodoro technique (timed study sessions)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech5" name="techniques" value="mind-maps">
+                        <label for="tech5">Mind maps / visual notes</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech6" name="techniques" value="teach-others">
+                        <label for="tech6">Teaching someone else / explaining concepts</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech7" name="techniques" value="none">
+                        <label for="tech7">Haven't tried any of these</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What Would Help -->
+            <div class="form-group">
+                <label for="wishlist">If you could have ONE thing to make studying easier, what would it be?</label>
+                <textarea id="wishlist" name="wishlist" placeholder="Be as specific as possible..."></textarea>
+            </div>
+            
+            <!-- Study Habits -->
+            <div class="form-group">
+                <label>How do you prefer to study?</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="study1" name="study-style" value="alone">
+                        <label for="study1">Alone, focused time</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="study2" name="study-style" value="with-friends">
+                        <label for="study2">With friends / group study</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="study3" name="study-style" value="with-teacher">
+                        <label for="study3">With a tutor or teacher</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="study4" name="study-style" value="mix">
+                        <label for="study4">Mix of different ways</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit">Send My Answers</button>
+        </form>
+    </div>
+    
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#surveyForm', formId: 'xwlewrdl' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
